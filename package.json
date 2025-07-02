@@ -1,0 +1,19 @@
+{
+  "name": "ai_edtech",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/safir-shopnill/ai_edtech.git"
+  },
+  "author": "Safir Shopnill",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/safir-shopnill/ai_edtech/issues"
+  },
+  "homepage": "https://github.com/safir-shopnill/ai_edtech#readme",
+  "description": ""
+}

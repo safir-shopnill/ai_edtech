@@ -1,29 +1,38 @@
-import OpenAI from "openai";
-const client = new OpenAI();
+document.getElementById("submitbutton").addEventListener("click", async () => {
+  const question = document.getElementById("userQuestion").value;
+  const responseBox = document.getElementById("aiResponse");
 
-// This prompts the user right after showing the question in the html file
-const question = prompt("Ask me a question about your career goals! Be sure to include what you want to get out of your job, and I will try my best to recommend a few possible careers!");
+  if (!question.trim()) {
+    responseBox.innerText = "Please enter a question before submitting.";
+    return;
+  }
 
-// Check if the question is null or empty
-if (question == null|| question.trim() === "") {
-    question = "Oh no! You didn't ask me a question! Reload the page and try again."; 
+  responseBox.innerText = "Thinking...";
 
-} 
-// Gives specific instructions to the AI to provide career advice 
-const response = await client.responses.create({
-    model: "gpt-4o",
-    instructions: "You are an AI career advisor. Provide 5 prospective careers that answer the user's question about their career goals in bullet point form and one tip on how to pursue it.",
-    input: question,
+  try {
+    const res = await fetch("/ask", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ question })
+    });
+
+    const data = await res.json();
+
+    if (data.answer) {
+      responseBox.innerText = data.answer;
+    } else {
+      responseBox.innerText = "No response from AI.";
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    responseBox.innerText = "An error occurred while fetching AI response.";
+  }
 });
 
-// AI API function here
 
 
-// Get the element from the HTML file where the div is at
-const responseBox = document.getElementById("aiResponse");
-
-// Display the response
-responseBox.innerText = response.output_text;
 
 
 

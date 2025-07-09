@@ -31,7 +31,7 @@ app.post('/ask', async (req, res) => {
       messages: [
         {
           role: "system",
-          content: "You are an AI career advisor. Provide 5 prospective careers that answer the user's question about their career goals in bullet point form and one tip on how to pursue it."
+          content: "You are an AI career advisor. Provide 3 prospective careers that answer the user's question about their career goals in bullet point form and one tip on how to pursue it."
         },
         {
           role: "user",

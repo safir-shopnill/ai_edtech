@@ -10,21 +10,25 @@ document.getElementById("submitbutton").addEventListener("click", async () => {
   responseBox.innerText = "Thinking...";
 
   try {
-    const res = await fetch("/ask", {
+    const res = await fetch("/api/ask", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ question })
+      body: JSON.stringify({ prompt: question })
+
     });
 
     const data = await res.json();
 
-    if (data.answer) {
-      responseBox.innerText = data.answer;
-    } else {
-      responseBox.innerText = "No response from AI.";
-    }
+    const aiMessage = data.choices?.[0]?.message?.content;
+
+if (aiMessage) {
+  responseBox.innerText = aiMessage;
+} else {
+  responseBox.innerText = "No response from AI.";
+}
+
   } catch (error) {
     console.error("Error:", error);
     responseBox.innerText = "An error occurred while fetching AI response.";

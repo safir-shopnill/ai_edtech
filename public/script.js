@@ -20,7 +20,7 @@ document.getElementById("submitbutton").addEventListener("click", async () => {
     });
 
     const data = await res.json();
-
+    console.log("Full response from /api/ask:", data);
     const aiMessage = data.choices?.[0]?.message?.content;
 
 if (aiMessage) {

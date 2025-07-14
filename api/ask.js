@@ -25,7 +25,7 @@ export default async function handler(req, res) {
     {
       role: "system",
       content:
-        "You are a helpful and concise career advisor. Always respond with exactly 3 career suggestions and 1 practical career tip based on the user's input. Format the careers as a numbered list, and the tip as a sentence starting with 'Tip:'.",
+        "I am a High School Senior. I am writing my interests and what i am good at. Always respond with exactly 3 career suggestions and 1 practical career tip based on my input. Format the careers as a numbered list, and the tip as a sentence starting with 'Tip:'.",
     },
     {
       role: "user",
